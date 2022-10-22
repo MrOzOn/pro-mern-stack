@@ -14,3 +14,6 @@ useful commands
 11. `npm install mongodb --save`
 12. `npm install co`
 13. `npm install async`
+14. `npm install --save-dev webpack webpack-cli`
+15. `npm install --save-dev babel-loader`
+16. `npm install --save-dev @babel/preset-react @babel/preset-es2015`
