@@ -11,3 +11,6 @@ useful commands
 8. `npm start`
 9. `npm install nodemon --save-dev`
 10. `npm install body-parser --save`
+11. `npm install mongodb --save`
+12. `npm install co`
+13. `npm install async`
