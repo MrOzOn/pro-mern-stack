@@ -9,3 +9,5 @@ useful commands
 6. `npm install --save-dev babel-preset-es2015`
 7. `npm run watch`
 8. `npm start`
+9. `npm install nodemon --save-dev`
+10. `npm install body-parser --save`
