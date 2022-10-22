@@ -68,18 +68,50 @@ class IssueAdd extends React.Component {
 }
 
 class IssueList extends React.Component {
-    render() {
-        return (
-        <div>
-            <h1>Issue Tracker</h1>
-            <IssueFilter />
-            <hr />
-            <IssueTable issues={issues}/>
-            <hr />
-            <IssueAdd />
-        </div>
-        );
-    }
+  constructor () {
+    super();
+    this.state = { issues: [] };
+
+    setTimeout(this.createTestIssue.bind(this), 2000);
+  }
+
+  componentDidMount () {
+    this.loadData();
+  }
+
+  loadData() {
+    setTimeout(()=> {
+      this.setState({issues: issues});
+    }, 500);
+  }
+
+  createIssue(newIssue) {
+    const newIssues = this.state.issues.slice();
+    newIssue.id = this.state.issues.length + 1;
+    newIssues.push(newIssue);
+    this.setState({ issues: newIssues });
+  }
+
+  createTestIssue() {
+    this.createIssue({
+    status: 'New', owner: 'Pieta', created: new Date(),
+      title: 'Completion date should be optional',
+    });
+  }
+
+
+  render() {
+      return (
+      <div>
+          <h1>Issue Tracker</h1>
+          <IssueFilter />
+          <hr />
+          <IssueTable issues={this.state.issues}/>
+          <hr />
+          <IssueAdd />
+      </div>
+      );
+  }
 }
 
 ReactDOM.render(<IssueList />, contentNode);
