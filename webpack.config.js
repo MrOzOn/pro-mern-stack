@@ -34,6 +34,15 @@ module.exports = {
             }
           }
         ]
+      },
+      devServer: {
+        port: 8000,
+        static: 'static',
+        proxy: {
+          '/api/*': {
+            target: 'http://localhost:3000'
+          } 
+        }
       }
 
 };
