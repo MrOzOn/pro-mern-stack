@@ -9,6 +9,25 @@ app.use(express.static('static'));
 const bodyParser = require('body-parser');
 app.use(bodyParser.json());
 
+if (process.env.NODE_ENV !== 'production') {
+  const webpack = require('webpack');
+  const webpackDevMiddleware = require('webpack-dev-middleware');
+  const webpackHotMiddleware = require('webpack-hot-middleware');
+
+  const config = require('../webpack.config');
+  config.entry.app.push('webpack-hot-middleware/client',
+    'webpack/hot/only-dev-server');
+
+  const bundler = webpack(config);
+
+
+  config.plugins.push(new webpack.HotModuleReplacementPlugin());
+  // config.plugins.push(new webpack.HotModuleReplacementPlugin().apply(bundler));
+
+  app.use(webpackDevMiddleware(bundler));
+  app.use(webpackHotMiddleware(bundler, { log: console.log }));
+}
+
 app.get('/api/issues', (req, res) => {
   db.collection('issues').find().toArray().then(issues => {
     const metadata = { total_count: issues.length };
@@ -45,7 +64,7 @@ let db;
 MongoClient.connect('mongodb://127.0.0.1').then(connection => {
   db = connection.db("issuetracker");
   app.listen(3000, function () {
-    console.log('App started on port 3000!');
+    console.log('App started on port 3000!!');
   });
 }).catch(error => {
   console.log('ERROR:', error);

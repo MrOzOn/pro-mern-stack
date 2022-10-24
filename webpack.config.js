@@ -3,7 +3,7 @@ const path = require('path');
 module.exports = {
     mode: "development",
     entry: {
-      app: './src/App.jsx',
+      app: ['./src/App.jsx'],
       vendor: ['react','react-dom','whatwg-fetch'],
     },
     output: {
@@ -35,14 +35,17 @@ module.exports = {
           }
         ]
       },
-      devServer: {
-        port: 8000,
-        static: 'static',
-        proxy: {
-          '/api/*': {
-            target: 'http://localhost:3000'
-          } 
-        }
+    devServer: {
+      port: 8000,
+      static: 'static',
+      proxy: {
+        '/api/*': {
+          target: 'http://localhost:3000'
+        } 
       }
+    },
+    plugins: [
+    ],
+
 
 };
