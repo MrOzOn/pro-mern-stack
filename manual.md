@@ -17,3 +17,5 @@ useful commands
 14. `npm install --save-dev webpack webpack-cli`
 15. `npm install --save-dev babel-loader`
 16. `npm install --save-dev @babel/preset-react @babel/preset-es2015`
+17. `npm install --save-dev react react-dom whatwg-fetch babel-polyfill`
+18. `npm install --save-dev webpack-dev-server`
