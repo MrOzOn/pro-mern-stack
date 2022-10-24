@@ -20,3 +20,8 @@ useful commands
 17. `npm install --save-dev react react-dom whatwg-fetch babel-polyfill`
 18. `npm install --save-dev webpack-dev-server`
 19. `npm install --save-dev webpack-dev-middleware webpack-hot-middleware`
+
+
+for developing project needed run 2 commands
+1. `npm run watch`
+2. `npm start`
